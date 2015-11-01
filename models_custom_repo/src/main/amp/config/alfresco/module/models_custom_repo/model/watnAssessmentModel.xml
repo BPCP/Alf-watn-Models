@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="asmt:Assessment">
+    <description>The Assessors Office Model </description>
+    <author>BPhelps</author>
+    <version>1.0</version>
+    <imports>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <import uri="http://www.watertown-ny.gov/model/watn/1.0" prefix="watn"/>
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.watertown-ny.gov/model/asmt/1.0" prefix="asmt"/>
+    </namespaces>
+    <data-types/>
+    <constraints/>
+    <types>
+    </types>
+    <aspects>
+        <aspect name="asmt:exemption">
+            <title>Exemption</title>
+            <properties>
+                <property name="asmt:exemptionCode">
+                    <title>Exemption Code</title>
+                    <type>d:int</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="asmt:initYear">
+                    <title>Exemption Type</title>
+                    <type>d:int</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+				<property name="asmt:termYear">
+                    <title>Exemption Type</title>
+                    <type>d:int</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects>
+            </mandatory-aspects>
+        </aspect>
+    </aspects>
+</model>

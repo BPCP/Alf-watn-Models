@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="eng:Engineering">
+    <description>The Engineering Department Model </description>
+    <author>BPhelps</author>
+    <version>1.0</version>
+    <imports>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <import uri="http://www.watertown-ny.gov/model/watn/1.0" prefix="watn"/>
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.watertown-ny.gov/model/eng/1.0" prefix="eng"/>
+    </namespaces>
+    <data-types/>
+    <constraints/>
+    <types>
+    </types>
+    <aspects>
+        <aspect name="eng:variance">
+            <title>Zoning Variance</title>
+            <properties>
+                <property name="eng:varianceType">
+                    <title>Variance Type</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects>
+                <aspect>watn:application</aspect>
+            </mandatory-aspects>
+        </aspect>
+    </aspects>
+</model>

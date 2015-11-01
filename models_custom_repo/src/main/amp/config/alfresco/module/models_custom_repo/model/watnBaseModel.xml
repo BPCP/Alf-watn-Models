@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="watn:WatertownBase">
+    <description>The Base Data Model for the City of Watertown</description>
+    <author>BPhelps</author>
+    <version>1.0</version>
+    <imports>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+    </imports>
+    <namespaces>
+        <namespace uri="http://www.watertown-ny.gov/model/watn/1.0" prefix="watn"/>
+    </namespaces>
+    <data-types/>
+    <constraints>
+        <constraint name="watn:minutesStatusConstraint" type="LIST">
+            <title>Status</title>
+            <parameter name="allowedValues">
+                <list>
+                    <value>In Process</value>
+                    <value>Draft</value>
+                    <value>Final</value>
+                </list>
+            </parameter>
+            <parameter name="caseSensitive">
+                <value>true</value>
+            </parameter>
+        </constraint>
+    </constraints>
+    <types/>
+    <aspects>
+	    <aspect name="watn:scan">
+            <title>Scan</title>
+            <description>document that has been scanned</description>
+            <properties>
+                <property name="watn:ocr">
+                    <title>OCR</title>
+                    <type>d:boolean</type>
+                    <mandatory>true</mandatory>
+                    <multiple>false</multiple>
+                    <index enabled="false">
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>     
+        <aspect name="watn:spatiallyLinked">
+            <title>Spatially Linked</title>
+            <description>A link to a spatial object</description>
+            <properties>
+                <property name="watn:gisLink">
+                    <title>GIS Link</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <multiple>true</multiple>
+                    <index enabled="true">
+                        <atomic>true</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>
+        <aspect name="watn:application">
+            <title>Application</title>
+            <properties>
+                <property name="watn:applicationId">
+                    <title>Application #</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:applicationType">
+                    <title>Application Type</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:applicationStatus">
+                    <title>Status</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:applicationDescription">
+                    <title>Application Description</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:applicationReceivedDate">
+                    <title>Received Date</title>
+                    <type>d:date</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:applicationDecisionDate">
+                    <title>Decision Date</title>
+                    <type>d:date</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:applicantName">
+                    <title>Applicant Name</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>
+        <aspect name="watn:minutes">
+            <title>Minutes</title>
+            <properties>
+                <property name="watn:minutesBoard">
+                    <title>Board</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+				<property name="watn:minutesMeetingType">
+                    <title>Meeting Type</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:minutesMeetingDate">
+                    <title>Meeting Date</title>
+                    <type>d:date</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:minutesStatus">
+                    <title>Document Status</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <default>In Process</default>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                    <constraints>
+                        <constraint name="watn:statusConstraint" ref="watn:minutesStatusConstraint"/>
+                    </constraints>
+                </property>
+            </properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects/>
+        </aspect>
+		<aspect name="watn:propertyTransfer">
+            <title>Property Transfer</title>
+            <description>Transfer of real property</description>
+            <properties>
+                <property name="watn:grantee">
+                    <title>Grantee</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <multiple>true</multiple>
+                    <index enabled="true">
+                        <atomic>true</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:grantor">
+                    <title>Grantor</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <multiple>true</multiple>
+                    <index enabled="true">
+                        <atomic>true</atomic>
+                        <stored>false</stored>
+                        <tokenised>TRUE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:transferDate">
+                    <title>Transfer Date</title>
+                    <type>d:date</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>true</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+		    </properties>
+		</aspect>
+		<aspect name="watn:filedAt">
+			<title>Filed At</title>
+            <description>Official Copy Location</description>
+			<properties>
+				<property name="watn:filedDate">
+					<title>Deed Filed Date</title>
+					<type>d:date</type>
+					<mandatory>false</mandatory>
+					<index enabled="true">
+						<atomic>false</atomic>
+						<stored>false</stored>
+						<tokenised>FALSE</tokenised>
+					</index>
+				</property>
+				<property name="watn:filedBook">
+                    <title>Book</title>
+                    <type>d:int</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+                <property name="watn:filedPage">
+                    <title>Page</title>
+                    <type>d:int</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+				<property name="watn:filedLocation">
+                    <title>Location</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+				<property name="watn:filedRoom">
+                    <title>Room</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+				<property name="watn:filedIndex">
+                    <title>Index</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+				<property name="watn:filedCabinet">
+                    <title>Cabinet</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+				<property name="watn:filedCopyAt">
+                    <title>Copy Location</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+					<multiple>true</multiple>
+                    <index enabled="true">
+                        <atomic>false</atomic>
+                        <stored>false</stored>
+                        <tokenised>FALSE</tokenised>
+                    </index>
+                </property>
+			</properties>
+            <associations/>
+            <overrides/>
+            <mandatory-aspects>
+               
+            </mandatory-aspects>
+        </aspect>
+    </aspects>
+</model>

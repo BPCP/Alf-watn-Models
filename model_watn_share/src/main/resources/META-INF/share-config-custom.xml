@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Share configuration related to 
+	this particular Share module extension, such as: - Doclib action config - 
+	Form config - Aspect and Type config Note. Any configuration related to the 
+	whole Share.war webapp (i.e. not specific to this share extension) should 
+	be placed in the environment specific config: alfresco/tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml 
+	file -->
+<alfresco-config>
+	<config evaluator="string-compare" condition="DocumentLibrary"
+		replace="false">
+		<!-- Used by the "Manage Aspects" action For custom aspects, remember to 
+			also add the relevant i18n string(s) cm_myaspect=My Aspect -->
+		<aspects>
+			<!-- Aspects that a user can see -->
+			<visible>
+				<aspect name="watn:spatiallyLinked" />
+				<aspect name="watn:application" />
+				<aspect name="watn:propertyTransfer" />
+				<aspect name="watn:minutes" />
+				<aspect name="watn:filedAt" />
+				<aspect name="watn:scan" />
+			</visible>
+
+			<!-- Aspects that a user can add. Same as "visible" if left empty -->
+			<addable />
+
+
+			<!-- Aspects that a user can remove. Same as "visible" if left empty -->
+			<removeable />
+
+		</aspects>
+	</config>
+	<config condition="watn:spatiallyLinked" evaluator="aspect"
+		replace="false">
+		<forms>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:gisLink" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:gisLink" label="GIS Link(s)" description="GIS" />
+				</appearance>
+			</form>
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show id="watn:gisLink" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:gisLink" label="GIS Link(s)" description="GIS" />
+				</appearance>
+			</form>
+		</forms>
+
+	</config>
+	<config condition="watn:minutes" evaluator="aspect" replace="false">
+		<forms>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:minutesBoard" />
+					<show force="false" id="watn:minutesMeetingType" />
+					<show force="false" id="watn:minutesMeetingDate" />
+					<show force="false" id="watn:minutesStatus" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:minutesBoard" mandatory="false" read-only="false" />
+					<field id="watn:minutesMeetingType" mandatory="false"
+						read-only="false" />
+					<field id="watn:minutesMeetingDate" label="Meeting Date"
+						mandatory="false" read-only="false" />
+					<field id="watn:minutesStatus" label="Status" mandatory="false"
+						read-only="false">
+						<control template="/org/alfresco/components/form/controls/selectone.ftl">
+							<control-param name="options">In Process,Draft,Final
+							</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show force="false" id="watn:minutesBoard" />
+					<show force="false" id="watn:minutesMeetingType" />
+					<show force="false" id="watn:minutesMeetingDate" />
+					<show force="false" id="watn:minutesStatus" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:minutesBoard" mandatory="false" read-only="false" />
+					<field id="watn:minutesMeetingType" mandatory="false"
+						read-only="false" />
+					<field id="watn:minutesMeetingDate" label="Meeting Date"
+						mandatory="false" read-only="false" />
+					<field id="watn:minutesStatus" label="Status" mandatory="false"
+						read-only="false">
+						<control template="/org/alfresco/components/form/controls/selectone.ftl">
+							<control-param name="options">In Process,Draft,Final
+							</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config condition="watn:scan" evaluator="aspect" replace="false">
+		<forms>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:ocr" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:ocr" mandatory="false" read-only="false" />
+				</appearance>
+			</form>
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show force="false" id="watn:ocr" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:ocr" mandatory="false" read-only="false" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config condition="watn:application" evaluator="aspect" replace="false">
+		<forms>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:applicationId" />
+					<show force="false" id="watn:applicantName" />
+					<show force="false" id="watn:applicationType" />
+					<show force="false" id="watn:applicationStatus" />
+					<show force="false" id="watn:applicationDescription" />
+					+
+					<show force="false" id="watn:applicationReceivedDate" />
+					<show force="false" id="watn:applicationDecisionDate" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:applicationId" mandatory="false" read-only="false"
+						set="" />
+					<field id="watn:applicationDescription" mandatory="false"
+						read-only="false" set="" />
+					<field id="watn:applicantName" mandatory="false" read-only="false"
+						set="" />
+					<field id="watn:applicationType" mandatory="false" read-only="false"
+						set="" />
+					<field id="watn:applicationStatus" mandatory="false"
+						read-only="false" set="">
+						<control template="/org/alfresco/components/form/controls/selectone.ftl">
+							<control-param name="options">Open,Granted,Denied,Abandoned,Withdrawn
+							</control-param>
+						</control>
+					</field>
+					<field id="watn:applicationReceivedDate" mandatory="false"
+						read-only="false" set="">
+						<control template="/org/alfresco/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+							<control-param name="forceEditable">false</control-param>
+						</control>
+					</field>
+					<field id="watn:applicationDecisionDate" mandatory="false"
+						read-only="false" set="">
+						<control template="/org/alfresco/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+							<control-param name="forceEditable">false</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+
+			<!-- Document Library pop-up Edit Metadata form -->
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show force="false" id="watn:appicationId" />
+					<show force="false" id="watn:applicantName" />
+					<show force="false" id="watn:applicationType" />
+					<show force="false" id="watn:applicationStatus" />
+					<show force="false" id="watn:applicationDescription" />
+					<show force="false" id="watn:applicationReceivedDate" />
+					<show force="false" id="watn:applicationDecisionDate" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:applicationId" mandatory="false" read-only="false"
+						set="" />
+					<field id="watn:applicationDescription" mandatory="false"
+						read-only="false" set="" />
+					<field id="watn:applicantName" mandatory="false" read-only="false"
+						set="" />
+					<field id="watn:applicationType" mandatory="false" read-only="false"
+						set="" />
+					<field id="watn:applicationStatus" mandatory="false"
+						read-only="false" set="">
+						<control template="/org/alfresco/components/form/controls/selectone.ftl">
+							<control-param name="options">Open,Granted,Denied,Abandoned,Withdrawn
+							</control-param>
+						</control>
+					</field>
+					<field id="watn:applicationReceivedDate" mandatory="false"
+						read-only="false" set="">
+						<control template="/org/alfresco/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+							<control-param name="forceEditable">false</control-param>
+						</control>
+					</field>
+					<field id="watn:applicationDecisionDate" mandatory="false"
+						read-only="false" set="">
+						<control template="/org/alfresco/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+							<control-param name="forceEditable">false</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+
+
+		</forms>
+	</config>
+	<config condition="watn:filedAt" evaluator="aspect" replace="false">
+		<forms>
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show force="false" id="watn:filedBook" />
+					<show force="false" id="watn:filedPage" />
+					<show force="false" id="watn:filedDate" />
+					<show force="false" id="watn:filedLocation" />
+					<show force="false" id="watn:filedRoom" />
+					<show force="false" id="watn:filedIndex" />
+					<show force="false" id="watn:filedCabinet" />
+					<show force="false" id="watn:filedCopyAt" />
+				</field-visibility>
+				<edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl" />
+				<appearance>
+					<field id="watn:filedBook" mandatory="false" read-only="false" />
+					<field id="watn:filedPage" mandatory="false" read-only="false" />
+					<field id="watn:filedDate" mandatory="false" read-only="false" />
+					<field id="watn:filedLocation" mandatory="false" read-only="false" />
+					<field id="watn:filedRoom" mandatory="false" read-only="false" />
+					<field id="watn:filedIndex" mandatory="false" read-only="false" />
+					<field id="watn:filedCabinet" mandatory="false" read-only="false" />
+					<field id="watn:filedCopyAt" mandatory="false" read-only="false" />
+				</appearance>
+			</form>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:filedBook" />
+					<show force="false" id="watn:filedPage" />
+					<show force="false" id="watn:filedDate" />
+					<show force="false" id="watn:filedLocation" />
+					<show force="false" id="watn:filedRoom" />
+					<show force="false" id="watn:filedIndex" />
+					<show force="false" id="watn:filedCabinet" />
+					<show force="false" id="watn:filedCopyAt" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:filedBook" mandatory="false" read-only="false" />
+					<field id="watn:filedPage" mandatory="false" read-only="false" />
+					<field id="watn:filedDate" mandatory="false" read-only="false" />
+					<field id="watn:filedLocation" mandatory="false" read-only="false" />
+					<field id="watn:filedRoom" mandatory="false" read-only="false" />
+					<field id="watn:filedIndex" mandatory="false" read-only="false" />
+					<field id="watn:filedCabinet" mandatory="false" read-only="false" />
+					<field id="watn:filedCopyAt" mandatory="false" read-only="false" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+	<config condition="watn:propertyTransfer" evaluator="aspect"
+		replace="false">
+		<forms>
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show force="false" id="watn:grantor" />
+					<show force="false" id="watn:grantee" />
+					<show force="false" id="watn:transferDate" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:grantor" label="Seller(s)" mandatory="false"
+						read-only="false" />
+					<field id="watn:grantee" label="Buyer(s)" mandatory="false"
+						read-only="false" />
+					<field id="watn:transferDate" mandatory="false" read-only="false" />
+				</appearance>
+			</form>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:grantor" />
+					<show force="false" id="watn:grantee" />
+					<show force="false" id="watn:transferDate" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:grantor" label="Seller(s)" mandatory="false"
+						read-only="false" />
+					<field id="watn:grantee" label="Buyer(s)" mandatory="false"
+						read-only="false" />
+					<field id="watn:transferDate" mandatory="false" read-only="false" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config condition="watn:scan" evaluator="aspect" replace="false">
+		<forms>
+			<form>
+				<field-visibility>
+					<show force="false" id="watn:ocr" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:orc" label="OCR" description="OCR" />
+				</appearance>
+			</form>
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show id="watn:ocr" />
+				</field-visibility>
+				<appearance>
+					<field id="watn:ocr" label="OCR" description="OCR" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+</alfresco-config>

@@ -30,7 +30,7 @@
                     </index>
                 </property>
                 <property name="asmt:initYear">
-                    <title>Exemption Type</title>
+                    <title>Initial Year</title>
                     <type>d:int</type>
                     <mandatory>false</mandatory>
                     <index enabled="true">
@@ -40,7 +40,7 @@
                     </index>
                 </property>
 				<property name="asmt:termYear">
-                    <title>Exemption Type</title>
+                    <title>Term Year</title>
                     <type>d:int</type>
                     <mandatory>false</mandatory>
                     <index enabled="true">

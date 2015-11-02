@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alfresco-config>
+	<!-- Document Library config section -->
+	<config evaluator="string-compare" condition="DocumentLibrary"
+		replace="false">
+		<!-- Used by the "Manage Aspects" action For custom aspects, remember to 
+			also add the relevant i18n string(s) cm_myaspect=My Aspect -->
+		<aspects>
+			<!-- Aspects that a user can see -->
+			<visible>
+				<aspect name="eng:variance" />
+			</visible>
+
+			<!-- Aspects that a user can add. Same as "visible" if left empty -->
+			<addable />
+
+			<!-- Aspects that a user can remove. Same as "visible" if left empty -->
+			<removeable />
+		</aspects>
+		<types />
+	</config>
+	<config condition="eng:variance" evaluator="aspect" replace="false">
+		<forms>
+			<form>
+				<field-visibility>
+					<show force="false" id="eng:varianceType" />
+				</field-visibility>
+				<appearance>
+					<field id="eng:varianceType" mandatory="false" read-only="false"
+						set="">
+						<control template="/org/alfresco/components/form/controls/selectone.ftl">
+							<control-param name="options">Unknown,Use,Area,Use and Area
+							</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+
+			<!-- Document Library pop-up Edit Metadata form -->
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show force="false" id="eng:varianceType" />
+				</field-visibility>
+				<appearance>
+					<field id="eng:varianceType" mandatory="false" read-only="false"
+						set="">
+						<control template="/org/alfresco/components/form/controls/selectone.ftl">
+							<control-param name="options">Unknown,Use,Area,Use and Area
+							</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+</alfresco-config>

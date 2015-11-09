@@ -9,7 +9,7 @@
 
 
 	<!-- Registration of new models -->
-	<bean id="gov.watertown_ny.dictionaryBootstrap" parent="dictionaryModelBootstrap"
+	<bean id="gov.watertown_ny.models_custom.dictionaryBootstrap" parent="dictionaryModelBootstrap"
 		depends-on="dictionaryBootstrap">
 		<property name="models">
 			<list>
